@@ -4,6 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogView", "BlogView\BlogView.csproj", "{CCE987AD-9F96-41C0-94C5-BF7B10F9A66A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{53258D66-FE99-465E-93B1-5182E1E5A0F9} = {53258D66-FE99-465E-93B1-5182E1E5A0F9}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogBusinessLogic", "BlogBusinessLogic\BlogBusinessLogic.csproj", "{53258D66-FE99-465E-93B1-5182E1E5A0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogDatabaseImplementation", "BlogDatabaseImplementation\BlogDatabaseImplementation.csproj", "{58D64015-2C18-4233-B0C4-E755A1A00EA3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,14 @@ Global
 		{CCE987AD-9F96-41C0-94C5-BF7B10F9A66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCE987AD-9F96-41C0-94C5-BF7B10F9A66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCE987AD-9F96-41C0-94C5-BF7B10F9A66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53258D66-FE99-465E-93B1-5182E1E5A0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53258D66-FE99-465E-93B1-5182E1E5A0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53258D66-FE99-465E-93B1-5182E1E5A0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53258D66-FE99-465E-93B1-5182E1E5A0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58D64015-2C18-4233-B0C4-E755A1A00EA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58D64015-2C18-4233-B0C4-E755A1A00EA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58D64015-2C18-4233-B0C4-E755A1A00EA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58D64015-2C18-4233-B0C4-E755A1A00EA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
