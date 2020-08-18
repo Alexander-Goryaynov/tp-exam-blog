@@ -94,5 +94,11 @@ namespace BlogView
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void создатьОтчётToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormCreateReport>();
+            form.ShowDialog();
+        }
     }
 }

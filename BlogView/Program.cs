@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BlogBusinessLogic.BusinessLogic;
 using BlogBusinessLogic.Interfaces;
 using BlogDatabaseImplementation.Implementations;
 using Unity;
@@ -29,6 +30,8 @@ namespace BlogView
             curContainer.RegisterType<IBlogLogic, BlogLogic>(
                 new HierarchicalLifetimeManager());
             curContainer.RegisterType<ICommentLogic, CommentLogic>(
+                new HierarchicalLifetimeManager());
+            curContainer.RegisterType<ReportLogic>(
                 new HierarchicalLifetimeManager());
             return curContainer;
         }

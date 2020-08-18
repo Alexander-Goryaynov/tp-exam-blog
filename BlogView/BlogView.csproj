@@ -36,6 +36,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -171,6 +174,12 @@
     <Compile Include="FormComments.Designer.cs">
       <DependentUpon>FormComments.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCreateReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreateReport.Designer.cs">
+      <DependentUpon>FormCreateReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormBlog.resx">
@@ -184,6 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormComments.resx">
       <DependentUpon>FormComments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreateReport.resx">
+      <DependentUpon>FormCreateReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -35,6 +35,7 @@
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
+            this.создатьОтчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -42,7 +43,8 @@
             // menuStrip
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.блогиToolStripMenuItem});
+            this.блогиToolStripMenuItem,
+            this.создатьОтчётToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(971, 24);
@@ -107,6 +109,13 @@
             this.buttonRefresh.UseVisualStyleBackColor = true;
             this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
+            // создатьОтчётToolStripMenuItem
+            // 
+            this.создатьОтчётToolStripMenuItem.Name = "создатьОтчётToolStripMenuItem";
+            this.создатьОтчётToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.создатьОтчётToolStripMenuItem.Text = "Создать отчёт";
+            this.создатьОтчётToolStripMenuItem.Click += new System.EventHandler(this.создатьОтчётToolStripMenuItem_Click);
+            // 
             // FormComments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,5 +149,6 @@
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.ToolStripMenuItem создатьОтчётToolStripMenuItem;
     }
 }
