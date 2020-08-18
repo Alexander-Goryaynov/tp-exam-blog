@@ -30,12 +30,15 @@
         {
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.блогиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьОтчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonRefresh = new System.Windows.Forms.Button();
-            this.создатьОтчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.создатьБэкапToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьБэкапToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -44,7 +47,9 @@
             // 
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.блогиToolStripMenuItem,
-            this.создатьОтчётToolStripMenuItem});
+            this.создатьОтчётToolStripMenuItem,
+            this.создатьБэкапToolStripMenuItem,
+            this.загрузитьБэкапToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(971, 24);
@@ -57,6 +62,13 @@
             this.блогиToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.блогиToolStripMenuItem.Text = "Блоги";
             this.блогиToolStripMenuItem.Click += new System.EventHandler(this.блогиToolStripMenuItem_Click);
+            // 
+            // создатьОтчётToolStripMenuItem
+            // 
+            this.создатьОтчётToolStripMenuItem.Name = "создатьОтчётToolStripMenuItem";
+            this.создатьОтчётToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.создатьОтчётToolStripMenuItem.Text = "Создать отчёт";
+            this.создатьОтчётToolStripMenuItem.Click += new System.EventHandler(this.создатьОтчётToolStripMenuItem_Click);
             // 
             // dataGridView
             // 
@@ -109,12 +121,19 @@
             this.buttonRefresh.UseVisualStyleBackColor = true;
             this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
-            // создатьОтчётToolStripMenuItem
+            // создатьБэкапToolStripMenuItem
             // 
-            this.создатьОтчётToolStripMenuItem.Name = "создатьОтчётToolStripMenuItem";
-            this.создатьОтчётToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.создатьОтчётToolStripMenuItem.Text = "Создать отчёт";
-            this.создатьОтчётToolStripMenuItem.Click += new System.EventHandler(this.создатьОтчётToolStripMenuItem_Click);
+            this.создатьБэкапToolStripMenuItem.Name = "создатьБэкапToolStripMenuItem";
+            this.создатьБэкапToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.создатьБэкапToolStripMenuItem.Text = "Создать бэкап";
+            this.создатьБэкапToolStripMenuItem.Click += new System.EventHandler(this.создатьБэкапToolStripMenuItem_Click);
+            // 
+            // загрузитьБэкапToolStripMenuItem
+            // 
+            this.загрузитьБэкапToolStripMenuItem.Name = "загрузитьБэкапToolStripMenuItem";
+            this.загрузитьБэкапToolStripMenuItem.Size = new System.Drawing.Size(108, 20);
+            this.загрузитьБэкапToolStripMenuItem.Text = "Загрузить бэкап";
+            this.загрузитьБэкапToolStripMenuItem.Click += new System.EventHandler(this.загрузитьБэкапToolStripMenuItem_Click);
             // 
             // FormComments
             // 
@@ -150,5 +169,8 @@
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonRefresh;
         private System.Windows.Forms.ToolStripMenuItem создатьОтчётToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem создатьБэкапToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem загрузитьБэкапToolStripMenuItem;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }

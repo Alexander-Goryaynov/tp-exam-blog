@@ -1,5 +1,6 @@
 ﻿using BlogBusinessLogic.BindingModels;
 using BlogBusinessLogic.Interfaces;
+using BlogDatabaseImplementation.Implementations;
 using System;
 using System.Windows.Forms;
 using Unity;
@@ -11,10 +12,12 @@ namespace BlogView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly ICommentLogic logic;
-        public FormComments(ICommentLogic logic)
+        private readonly BackupLogic bLogic;
+        public FormComments(ICommentLogic logic, BackupLogic bLogic)
         {
             InitializeComponent();
             this.logic = logic;
+            this.bLogic = bLogic;
         }
 
         private void блогиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -99,6 +102,45 @@ namespace BlogView
         {
             var form = Container.Resolve<FormCreateReport>();
             form.ShowDialog();
+        }
+
+        private void создатьБэкапToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new FolderBrowserDialog())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        bLogic.CreateBackup(dialog.SelectedPath);
+                        MessageBox.Show("Сохранено успешно", "Готово", MessageBoxButtons.OK);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void загрузитьБэкапToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var dialog = new FolderBrowserDialog())
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        bLogic.LoadBackup(dialog.SelectedPath);
+                        MessageBox.Show("Загружено успешно", "Готово", MessageBoxButtons.OK);
+                        LoadData();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }

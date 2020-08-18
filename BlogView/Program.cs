@@ -33,6 +33,8 @@ namespace BlogView
                 new HierarchicalLifetimeManager());
             curContainer.RegisterType<ReportLogic>(
                 new HierarchicalLifetimeManager());
+            curContainer.RegisterType<BackupLogic>(
+                new HierarchicalLifetimeManager());
             return curContainer;
         }
     }
