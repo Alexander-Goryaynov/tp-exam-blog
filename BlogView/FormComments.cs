@@ -2,6 +2,7 @@
 using BlogBusinessLogic.Interfaces;
 using BlogDatabaseImplementation.Implementations;
 using System;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 
@@ -112,7 +113,7 @@ namespace BlogView
                 {
                     try
                     {
-                        bLogic.CreateBackup(dialog.SelectedPath);
+                        CreateBackup(dialog.SelectedPath);
                         MessageBox.Show("Сохранено успешно", "Готово", MessageBoxButtons.OK);
                     }
                     catch (Exception ex)
@@ -121,6 +122,11 @@ namespace BlogView
                     }
                 }
             }
+        }
+
+        private async void CreateBackup(string path)
+        {
+            await Task.Run(() => bLogic.CreateBackup(path));
         }
 
         private void загрузитьБэкапToolStripMenuItem_Click(object sender, EventArgs e)

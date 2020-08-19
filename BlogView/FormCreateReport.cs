@@ -37,7 +37,7 @@ namespace BlogView
                 {
                     try
                     {
-                        logic.SaveBlogCommentsToPdf(new ReportBindingModel
+                        CreateReport(new ReportBindingModel
                         {
                             FileName = dialog.FileName,
                             DateFrom = dateTimePickerFrom.Value.Date,
@@ -52,6 +52,11 @@ namespace BlogView
                 }
             }
  
+        }
+
+        private async void CreateReport(ReportBindingModel model)
+        {
+            await (Task.Run(() => logic.SaveBlogCommentsToPdf(model)));
         }
     }
 }

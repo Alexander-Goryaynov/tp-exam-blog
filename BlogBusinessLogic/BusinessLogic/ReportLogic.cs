@@ -36,8 +36,8 @@ namespace BlogBusinessLogic.BusinessLogic
                                 BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
                     //вставляем заголовок
                     var phraseTitle = new Phrase("Отчет",
-                    new iTextSharp.text.Font(baseFont, 16, iTextSharp.text.Font.BOLD));
-                    iTextSharp.text.Paragraph paragraph = new iTextSharp.text.Paragraph(phraseTitle)
+                    new Font(baseFont, 16, Font.BOLD));
+                    Paragraph paragraph = new Paragraph(phraseTitle)
                     {
                         Alignment = Element.ALIGN_CENTER,
                         SpacingAfter = 12
@@ -46,8 +46,8 @@ namespace BlogBusinessLogic.BusinessLogic
                     // вставляем даты
                     var phrasePeriod = new Phrase("c " + model.DateFrom.Value.ToShortDateString() +
                         " по " + model.DateTo.Value.ToShortDateString(),
-                        new iTextSharp.text.Font(baseFont, 14, iTextSharp.text.Font.BOLD));
-                    paragraph = new iTextSharp.text.Paragraph(phrasePeriod)
+                        new Font(baseFont, 14, Font.BOLD));
+                    paragraph = new Paragraph(phrasePeriod)
                     {
                         Alignment = Element.ALIGN_CENTER,
                         SpacingAfter = 12
@@ -61,7 +61,7 @@ namespace BlogBusinessLogic.BusinessLogic
                     table.SetTotalWidth(new float[] { 160, 100, 120, 180, 120 });
                     //вставляем шапку
                     PdfPCell cell = new PdfPCell();
-                    var fontForCellBold = new iTextSharp.text.Font(baseFont, 10, iTextSharp.text.Font.BOLD);
+                    var fontForCellBold = new Font(baseFont, 10, Font.BOLD);
                     table.AddCell(new PdfPCell(new Phrase("Название блога", fontForCellBold))
                     {
                         HorizontalAlignment = Element.ALIGN_CENTER
@@ -84,7 +84,7 @@ namespace BlogBusinessLogic.BusinessLogic
                     });
                     //заполняем таблицу
                     var list = GetBlogComments(model);
-                    var fontForCells = new iTextSharp.text.Font(baseFont, 10);
+                    var fontForCells = new Font(baseFont, 10);
                     foreach (var elem in list)
                     {
                         cell = new PdfPCell(new Phrase(elem.BlogName, fontForCells));
@@ -114,6 +114,7 @@ namespace BlogBusinessLogic.BusinessLogic
         {
             var result = new List<ReportBlogCommentsViewModel>();
             var blogs = bLogic.Read(null);
+            // удаляем блоги, не подходящие по дате
             if (model.DateFrom.HasValue)
             {
                 blogs.RemoveAll(rec => rec.CreationDate < model.DateFrom.Value);
@@ -123,6 +124,9 @@ namespace BlogBusinessLogic.BusinessLogic
                 blogs.RemoveAll(rec => rec.CreationDate > model.DateTo.Value);
             }
             var comments = cLogic.Read(null);
+            // удаляем комментарии, блоги которых были удалены из списка
+            comments.RemoveAll(rec => (blogs.FirstOrDefault(b => b.Id == rec.BlogId)) == null);
+            // сортировка для того, чтобы сгруппировать комментарии по блогам
             comments.Sort((x, y) => (x.BlogId.CompareTo(y.BlogId)));
             foreach(var comment in comments)
             {
@@ -136,6 +140,7 @@ namespace BlogBusinessLogic.BusinessLogic
                 {
                     if (comment.BlogId == blog.Id)
                     {
+                        // если комментарий не первый в блоге
                         if (result.Count > 0 && result.Last().BlogName.Equals(blog.Name))
                         {
                             record.BlogName = " ";
