@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
@@ -80,6 +81,20 @@ namespace BlogView
                 comboBoxBlog.SelectedValue == null)
             {
                 MessageBox.Show("Заполните все поля", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var regex = new Regex(@"[.]$");
+            if (regex.IsMatch(textBoxHeader.Text))
+            {
+                MessageBox.Show("В конце заголовка не полагается ставить точку", "Предупреждение",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            regex = new Regex(@"\d");
+            if (regex.IsMatch(textBoxAuthor.Text))
+            {
+                MessageBox.Show("Имя автора не может содержать цифр", "Предупреждение",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
