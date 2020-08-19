@@ -8,6 +8,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -44,7 +45,10 @@ namespace BlogView
                 } 
                 else
                 {
-                    var boxBlogId = cLogic.Read(new CommentBindingModel { Id = id })[0].BlogId;
+                    Type type = cLogic.GetType().GetInterface("ICommentLogic");
+                    var boxBlogId = ((List<CommentViewModel>)(type.InvokeMember("Read",
+                        BindingFlags.InvokeMethod, null, cLogic, 
+                        new object[] { new CommentBindingModel { Id = id } })))?[0].Id;
                     foreach (var item in comboBoxBlog.Items)
                     {
                         if((item as BlogViewModel).Id == boxBlogId)
@@ -58,7 +62,10 @@ namespace BlogView
             {
                 try
                 {
-                    var view = cLogic.Read(new CommentBindingModel { Id = id.Value })?[0];
+                    Type type = cLogic.GetType().GetInterface("ICommentLogic");
+                    var view = ((List<CommentViewModel>)(type.InvokeMember("Read",
+                        BindingFlags.InvokeMethod, null, cLogic,
+                        new object[] { new CommentBindingModel { Id = id } })))?[0];
                     if (view != null)
                     {
                         textBoxHeader.Text = view.Header;
